@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import NewsItem from './NewsItem'
-
-export class News extends Component {
-    articles = [
+{
+    "status": "ok",
+    "totalResults": 11,
+    "articles": [
         {
             "source": {
                 "id": "abc-news",
@@ -147,30 +146,4 @@ export class News extends Component {
             "content": "UFC president Dana White has responded to Paige VanZant's claims that she makes more money posting on Instagram than she does fighting in UFC. \r\nVanZant claimed on Tuesday that she wanted more money … [+1438 chars]"
         }
     ]
-    
-    constructor(){
-        super();
-        console.log("Hello I am a constructor.");
-        this.state={
-             articles: this.articles,
-             loading: false
-        }
-    }
-  
-    render() {
-    return (
-      <div className='container my-3'>
-                <h2>NewsPanda - Top Headlines</h2>
-                <div className="row">
-                {this.state.articles.map((element)=>{
-                       return <div className="col md-4" key={element.url}>
-                       <NewsItem title={element.title.slice(0,45)} description={element.description.slice(0,88)} imageUrl={element.urlToImage} newsUrl={element.url}/>
-                       </div> 
-                })}
-                </div>
-        </div>
-    )
-  }
 }
-
-export default News
