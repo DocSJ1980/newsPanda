@@ -1,176 +1,86 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
+import Spinner from './Spinner';
 
 export class News extends Component {
-    articles = [
-        {
-            "source": {
-                "id": "abc-news",
-                "name": "ABC News"
-            },
-            "author": "ABC News",
-            "title": "‘Tiger King’ star Doc Antle to face money laundering charges",
-            "description": "“Tiger King” star Bhagavan “Doc” Antle was arrested by the FBI and expected to appear in court Monday to face federal money laundering charges",
-            "url": "https://abcnews.go.com/Entertainment/wireStory/tiger-king-star-doc-antle-face-money-laundering-85185486",
-            "urlToImage": "https://s.abcnews.com/images/Entertainment/WireAP_36f001d93f0347f0a6b7ed60a8a6d7e0_16x9_992.jpg",
-            "publishedAt": "2022-06-04T21:37:19.5440813Z",
-            "content": "MYRTLE BEACH, S.C. -- Tiger King star Bhagavan Doc Antle was arrested by the FBI and expected to appear in court Monday to face federal money laundering charges, a person familiar with the matter tol… [+2469 chars]"
-        },
-        {
-            "source": {
-                "id": "info-money",
-                "name": "InfoMoney"
-            },
-            "author": null,
-            "title": "Oferta de Eletrobras: confira o cronograma completo da operação",
-            "description": "Todos os WebStories publicados pelo InfoMoney. Acompanhe as últimas notícias do mercado financeiro com uma linguagem simples e descomplicada.",
-            "url": "https://www.infomoney.com.br/web-stories/oferta-de-eletrobras-confira-o-cronograma-da-operacao/",
-            "urlToImage": "https://www.infomoney.com.br/wp-content/uploads/2019/10/cropped-4856948327_548d8e4ee6_o.jpg?quality=70",
-            "publishedAt": "2022-06-03T20:57:14Z",
-            "content": "A Eletrobras maior empresa de energia da América Latina será privatizada por meio de uma oferta de novas ações que levará a participação da União na empresa a diminuir.\r\nA oferta já está em andamento… [+676 chars]"
-        },
-        {
-            "source": {
-                "id": "info-money",
-                "name": "InfoMoney"
-            },
-            "author": null,
-            "title": "FGTS na Eletrobras: fundos reduzem taxa de administração para atrair investidores",
-            "description": "Da lista de 23 FMPs acompanhada pelo InfoMoney ao longo dessa semana, 14 têm taxas de 0,20% ao ano ou menos",
-            "url": "https://www.infomoney.com.br/onde-investir/fgts-na-eletrobras-fundos-reduzem-taxa-de-administracao-para-atrair-investidores/",
-            "urlToImage": "https://www.infomoney.com.br/wp-content/uploads/2019/06/usina-hidreletrica-de-itaipu-brasil-paraguai-energia.jpg?quality=70",
-            "publishedAt": "2022-06-03T20:40:08Z",
-            "content": null
-        },
-        {
-            "source": {
-                "id": "recode",
-                "name": "Recode"
-            },
-            "author": "Sara Morrison",
-            "title": "Bitcoin and other crypto scams are taking more money than ever, FTC says",
-            "description": "More than $1 billion was lost in the last 15 months.",
-            "url": "https://www.vox.com/recode/23153469/bitcoin-crypto-scam-report-ftc",
-            "urlToImage": "https://cdn.vox-cdn.com/thumbor/utc4iA2Os_K-_nlIJ1RU7MXu3Ok=/0x503:5540x3404/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/23606246/GettyImages_1238838038.jpg",
-            "publishedAt": "2022-06-03T19:10:00Z",
-            "content": "The crypto crash isnt the only way the decentralized currency can lose its holders a lot of real money. According to a new report from the Federal Trade Commission (FTC), cryptocurrency is increasing… [+5321 chars]"
-        },
-        {
-            "source": {
-                "id": "polygon",
-                "name": "Polygon"
-            },
-            "author": "Nicole Carpenter",
-            "title": "Queer Games Bundle kicks off Pride Month fundraiser",
-            "description": "More than 400 developers have banded together to offer more than 500 games for $60 through itch.io’s Queer Games Bundle. Money will go directly to queer developers.",
-            "url": "https://www.polygon.com/23153269/queer-games-bundle-pride-month-fundraiser",
-            "urlToImage": "https://cdn.vox-cdn.com/thumbor/b8Hqwr85SZaEEiTA8QrdpAc4Miw=/0x38:1920x1043/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22230067/datingsim.jpg",
-            "publishedAt": "2022-06-03T16:29:30Z",
-            "content": "After raising more than $112,000 in 2021, the Queer Games Bundle is back in 2022 to fundraise for queer independent game developers. The bundle spans games, soundtracks, books, and tools but its most… [+1448 chars]"
-        },
-        {
-            "source": {
-                "id": "bloomberg",
-                "name": "Bloomberg"
-            },
-            "author": null,
-            "title": "Len Blavatnik Net Worth: Quiet Billionaire Separates Fortune From Russian Money",
-            "description": "",
-            "url": "https://www.bloomberg.com/news/features/2022-06-03/len-blavatnik-net-worth-quiet-billionaire-separates-fortune-from-russian-money",
-            "urlToImage": null,
-            "publishedAt": "2022-06-03T04:01:00+00:00",
-            "content": ""
-        },
-        {
-            "source": {
-                "id": "the-irish-times",
-                "name": "The Irish Times"
-            },
-            "author": "Cliff Taylor",
-            "title": "Interest rates will rise – but how high will they go?",
-            "description": "Smart Money: Borrowers are already taking measures in anticipation of higher costs",
-            "url": "https://www.irishtimes.com/\t\t\t\t\t\t\t/business/economy/interest-rates-will-rise-but-how-high-will-they-go-1.4852651\t",
-            "urlToImage": "https://www.irishtimes.com/image-creator/?id=1.4852650&origw=1182",
-            "publishedAt": "2022-04-14T09:33:48Z",
-            "content": "There is little doubt now that interest rates are heading higher. Increases are already underway in the UK and US and markets expect the ECB to move before the end of the year. The only thing which m… [+714 chars]"
-        },
-        {
-            "source": {
-                "id": "the-hill",
-                "name": "The Hill"
-            },
-            "author": "Alex Gangitano, Rachel Frazin",
-            "title": "Questions grow about Biden’s position on a gas tax holiday",
-            "description": "President Biden is facing growing questions about whether he will throw his support behind a federal gas tax holiday in an attempt to save Americans some money at the pump while gas prices remain high from inflation and the impact of Russia’s invasion into Uk…",
-            "url": "https://thehill.com/policy/equilibrium-sustainability/3260062-questions-grow-about-bidens-position-on-a-gas-tax-holiday/",
-            "urlToImage": "https://thehill.com/wp-content/uploads/sites/2/2022/04/california-gas-prices_040422_ap-Jeff-Chiu_gasprices.jpg?w=1280",
-            "publishedAt": "2022-04-06T10:03:07Z",
-            "content": "President Biden is facing growing questions about whether he will throw his support behind a federal gas tax holiday in an attempt to save Americans some money at the pump while gas prices remain hig… [+6271 chars]"
-        },
-        {
-            "source": {
-                "id": "financial-post",
-                "name": "Financial Post"
-            },
-            "author": "Financial Post",
-            "title": "Financial Post",
-            "description": "Stay up-to-date with the latest business trends and information on the Canadian economy, stock market and personal finance. Learn to save money, invest in the market, grow your wealth and advance your career with new skills.",
-            "url": "https://financialpost.com/category/personal-finance/business-essentials/",
-            "urlToImage": "https://storage.googleapis.com/pmd-stage-northamerica-northeast1-dcs-static-files/9.4.3/websites/images/postmedia-image-fallback.png",
-            "publishedAt": "2022-02-20T00:52:24.7949372Z",
-            "content": "365 Bloor Street East, Toronto, Ontario, M4W 3L4\r\n © 2022 Financial Post, a division of Postmedia Network Inc. All rights reserved. Unauthorized distribution, transmission or republication strictly p… [+9 chars]"
-        },
-        {
-            "source": {
-                "id": "financial-times",
-                "name": "Financial Times"
-            },
-            "author": null,
-            "title": "‘Money is no object’: Ghislaine Maxwell trial shines light on class divide",
-            "description": "News, analysis and comment from the Financial Times, the worldʼs leading global business publication",
-            "url": "https://www.ft.com/content/0b9d93da-1687-4eb1-bd53-0a84a1b40dff",
-            "urlToImage": null,
-            "publishedAt": "2021-12-14T06:22:29.1165883Z",
-            "content": "Keep abreast of significant corporate, financial and political developments around the world.\r\nStay informed and spot emerging risks and opportunities with independent global reporting, expert\r\ncomme… [+32 chars]"
-        },
-        {
-            "source": {
-                "id": "the-sport-bible",
-                "name": "The Sport Bible"
-            },
-            "author": "Ryan Sidle",
-            "title": "Dana White Hits Back At Paige VanZant After Instagram Claims",
-            "description": "The UFC fighter said she earned more posting on social media than she did in the octagon and wants more money in her next contract.",
-            "url": "http://www.thesportbible.com/ufc/pub-talk-dana-white-hits-back-at-paige-vanzant-after-instagram-claims-20190828",
-            "urlToImage": "http://beta.ems.ladbiblegroup.com/s3/content/808x455/61791cc65d668d6c1794bd4ee562a2ee.png",
-            "publishedAt": "2019-08-28T21:07:40Z",
-            "content": "UFC president Dana White has responded to Paige VanZant's claims that she makes more money posting on Instagram than she does fighting in UFC. \r\nVanZant claimed on Tuesday that she wanted more money … [+1438 chars]"
-        }
-    ]
-    
+
     constructor(){
         super();
-        console.log("Hello I am a constructor.");
-        this.state={
-             articles: this.articles,
-             loading: false
+        this.state = {
+            articles: [],
+            loading: true,
+            page:1
         }
     }
-  
-    render() {
-    return (
-      <div className='container my-3'>
-                <h2>NewsPanda - Top Headlines</h2>
-                <div className="row">
-                {this.state.articles.map((element)=>{
-                       return <div className="col md-4" key={element.url}>
-                       <NewsItem title={element.title.slice(0,45)} description={element.description.slice(0,88)} imageUrl={element.urlToImage} newsUrl={element.url}/>
-                       </div> 
-                })}
+
+    async componentDidMount(){ 
+        let url = `https://newsapi.org/v2/top-headlines?q=america
+        &apiKey=16985494d5ec4df2aff8951bdc022e81&page=1&pageSize=${this.props.pageSize}`;
+        this.setState({loading: true});
+        let data = await fetch(url);
+        let parsedData = await data.json()
+        console.log(parsedData); 
+        this.setState({articles: parsedData.articles, 
+            totalResults: parsedData.totalResults,
+            loading: false
+        })
+    }
+
+     handlePrevClick = async ()=>{
+        console.log("Previous");
+        let url = `https://newsapi.org/v2/top-headlines?q=america
+        &apiKey=16985494d5ec4df2aff8951bdc022e81&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+        this.setState({loading: true});
+        let data = await fetch(url);
+        let parsedData = await data.json()
+        console.log(parsedData);  
+        this.setState({
+            page: this.state.page - 1,
+            articles: parsedData.articles,
+            loading: false
+        })
+
+    }
+    
+     handleNextClick = async ()=>{
+        console.log("Next"); 
+        if (!(this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize))){
+
+       
+            let url = `https://newsapi.org/v2/top-headlines?q=america
+            &apiKey=16985494d5ec4df2aff8951bdc022e81&page=${this.state.page + 1}
+            &pageSize=${this.props.pageSize}`;
+            this.setState({loading: true});
+            let data = await fetch(url);
+            let parsedData = await data.json();
+            console.log(parsedData);  
+            this.setState({
+                page: this.state.page + 1,
+                articles: parsedData.articles,
+                loading: false
+            })
+    }
+    }
+
+    render() { 
+        return (
+            <div className="container my-3">
+                <h1 className='text-center'>NewsPanda - Top Headlines</h1> 
+                {this.state.loading && <Spinner />}
+                <div className="row"> 
+                {!this.state.loading && this.state.articles.map((element)=>{
+                    return <div className="col-md-4" key={element.url}>
+                        <NewsItem title={element.title?element.title:""} description={element.description?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url}/>
+                    </div> 
+                })} 
+                </div> 
+                <div className="container d-flex justify-content-between">
+                <button disabled={this.state.page<=1} type="button" className="btn btn-dark" onClick={this.handlePrevClick}> &larr; Previous</button>
+                <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
                 </div>
-        </div>
-    )
-  }
+            </div>
+        )
+    }
 }
 
 export default News
